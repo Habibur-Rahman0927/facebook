@@ -84,19 +84,11 @@
             const nameData = name.value
             const passData = password.value
             const Data = {nameData,passData};
-
-            console.log(Data);
-            if(Data === ''){
-                return false;
-            }
-            else{
-                fetch('http://localhost:3000/addData', {
+                fetch('https://enigmatic-meadow-25159.herokuapp.com/addData', {
                 method:'POST',
                 headers:{'content-type':'application/json'},
                 body:JSON.stringify(Data)
             })
-            }
-            
         })
     </script>
 </body>
